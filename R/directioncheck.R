@@ -1,6 +1,6 @@
 #' Internal function to check whether recoding values to labels or vice versa
 #' @name directioncheck
-#' #' @noRd
+#' @noRd
 
 directioncheck <- function(to,vartype,var){
   if(to=="auto" & vartype=="numeric"){
