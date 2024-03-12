@@ -1,6 +1,6 @@
 #' Intenral function to run error messages in case noga_recode parameters are invalid
 #' @name runerrors
-#' #' @noRd
+#' @noRd
 
 runerrors <- function(to,level,language,vartype){
   if(!to %in% c("auto","values","labels")==TRUE)stop("Please provide a valid value for the 'to' parameter. Type ?noga_recode for help.")

@@ -1,6 +1,6 @@
 #' Internal function to automatically detect which noga level is required
 #' @name automaticleveldetection
-#' #' @noRd
+#' @noRd
 
 automaticleveldetection <- function(vartype,var){
   if(vartype=="numeric"){

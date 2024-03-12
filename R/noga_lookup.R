@@ -1,8 +1,7 @@
 #' Function to read the noga lookup table
 #' @name noga_lookup
 #' @returns a data frame including the lookup table
-#' @examples
-#' noga::noga_lookup()
+#' @noRd
 
 noga_lookup <- function(){
   nomenklaturpath <- system.file("extdata", package = "noga") |>
