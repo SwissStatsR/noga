@@ -1,0 +1,14 @@
+#' Function to read the noga lookup table
+#' @name noga_lookup
+#' @returns a data frame including the lookup table
+#' @examples
+#' noga::noga_lookup()
+
+noga_lookup <- function(){
+  nomenklaturpath <- system.file("extdata", package = "noga") |>
+    list.files(full.names=TRUE) |>
+    grep(pattern="HCL_NOGA",x=_,value=TRUE)
+
+    lookup <- readRDS(nomenklaturpath)
+    return(lookup)
+}

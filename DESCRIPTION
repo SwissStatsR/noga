@@ -1,0 +1,12 @@
+Package: noga
+Type: Package
+Title: noga: Recode according to the General Classifcation of Economic Activities 2008
+Version: 0.1.0
+Author: Johannes Besch
+Maintainer: Johannes Besch <johannes.besch@gmx.ch>
+Description: This package recodes numeric NOGA values to its value labels and vice versa
+    The package allows to recode values from all five NOGA levels (Section, Division, Group, Class and Type).
+    The package can recode values to value labels in four languages (English, German, French and Italian).
+License: GPL3
+Encoding: UTF-8
+LazyData: true
