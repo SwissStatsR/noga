@@ -11,10 +11,13 @@
 #' noga::noga_recode(var=example.data$,language="fr",level="section",to="auto")
 
 noga_recode <- function(var,language="en",level="auto",to="auto"){
-
   lookup <- noga_lookup()
   vartype <- class(var)
-  runerrors(to,level,language,vartype)
+  if(!to %in% c("auto","values","labels")==TRUE)stop("Please provide a valid value for the 'to' parameter. Type ?noga_recode for help.")
+  if(!level %in% c("auto","section","division","group","class","type")==TRUE)stop("Please provide a valid value for the 'level' paramter. Type ?noga_recode for help.")
+  if(!language %in% c("en","de","fr","it")==TRUE)stop("Please provide a valid value for the 'language' parameter. Type ?noga_recode for help.")
+  if(vartype=="factor")stop("Please provide only a numeric or character variable to recode. Factor variables are not supported.")
+
 
   if(to!="auto"){
     direction.to <- to
@@ -30,8 +33,11 @@ noga_recode <- function(var,language="en",level="auto",to="auto"){
     }else if(vartype=="numeric"){
       noga.level <- paste0(level,".n")
     }
+    detected.noga.level <- gsub(pattern="(\\.n$)",replacement="",automaticleveldetection(vartype,var))
+    if(noga.level!=detected.noga.level)warning("The noga level you have supplied manually in the level parameter does not correspond to the automatically detected noga level of the input variable. Expect weird output. If you think the noga level you have supplied does match the one of the varaible and that this is a bug of this function, please open an issue at https://github.com/jbeoh/noga/issues")
   }else{
     noga.level <- automaticleveldetection(vartype,var)
+    if(noga.level=="Please provide the noga level manually, the automatic detection failed.")stop("Please provide the noga level manually, the automatic detection failed.")
   }
 
   lookup <- lookup[,c(eval(noga.level),eval(label.var))]
