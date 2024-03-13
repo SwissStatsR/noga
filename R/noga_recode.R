@@ -34,10 +34,15 @@ noga_recode <- function(var,language="en",level="auto",to="auto"){
     noga.level <- automaticleveldetection(vartype,var)
   }
 
+  lookup <- lookup[,c(eval(noga.level),eval(label.var))]
+  lookup <- lookup[!is.na(lookup[,eval(noga.level)]),]
   if(direction.to=="values"){
-    plyr::mapvalues(var,from=lookup[,eval(label.var)],to=lookup[,eval(noga.level)],warn_missing=FALSE)
+    from.vector <- as.vector(unlist(lookup[,eval(label.var)]))
+    to.vector <- as.vector(unlist(lookup[,eval(noga.level)]))
   }else{
-    plyr::mapvalues(var,from=lookup[,eval(noga.level)],to=lookup[,eval(label.var)],warn_missing=FALSE)
+    from.vector <- as.vector(unlist(lookup[,eval(noga.level)]))
+    to.vector <- as.vector(unlist(lookup[,eval(label.var)]))
   }
+  plyr::mapvalues(var,from=from.vector,to=to.vector,warn_missing=FALSE)
 
 }
