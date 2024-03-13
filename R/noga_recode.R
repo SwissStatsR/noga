@@ -19,7 +19,7 @@ noga_recode <- function(var,language="en",level="auto",to="auto"){
   if(to!="auto"){
     direction.to <- to
   }else{
-    directioncheck(to,vartype,var)
+    direction.to <- directioncheck(to,vartype,var)
   }
 
   label.var <- paste0("name_",language)
@@ -31,7 +31,7 @@ noga_recode <- function(var,language="en",level="auto",to="auto"){
       noga.level <- paste0(level,".n")
     }
   }else{
-    automaticleveldetection(vartype,var)
+    noga.level <- automaticleveldetection(vartype,var)
   }
 
   if(direction.to=="values"){
