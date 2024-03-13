@@ -35,9 +35,9 @@ noga_recode <- function(var,language="en",level="auto",to="auto"){
   }
 
   if(direction.to=="values"){
-    plyr::mapvalues(var,from=lookup[,eval(label.var)],to=lookup[,eval(noga.level)])
+    plyr::mapvalues(var,from=lookup[,eval(label.var)],to=lookup[,eval(noga.level)],warn_missing=FALSE)
   }else{
-    plyr::mapvalues(var,from=lookup[,eval(noga.level)],to=lookup[,eval(label.var)])
+    plyr::mapvalues(var,from=lookup[,eval(noga.level)],to=lookup[,eval(label.var)],warn_missing=FALSE)
   }
 
 }
