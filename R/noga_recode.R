@@ -13,11 +13,7 @@
 noga_recode <- function(var,language="en",level="auto",to="auto"){
   lookup <- noga_lookup()
   vartype <- class(var)
-  if(!to %in% c("auto","values","labels")==TRUE)stop("Please provide a valid value for the 'to' parameter. Type ?noga_recode for help.")
-  if(!level %in% c("auto","section","division","group","class","type")==TRUE)stop("Please provide a valid value for the 'level' paramter. Type ?noga_recode for help.")
-  if(!language %in% c("en","de","fr","it")==TRUE)stop("Please provide a valid value for the 'language' parameter. Type ?noga_recode for help.")
-  if(vartype=="factor")stop("Please provide only a numeric or character variable to recode. Factor variables are not supported.")
-
+  runerrors <- function(to,level,language,vartype)
 
   if(to!="auto"){
     direction.to <- to
