@@ -22,6 +22,8 @@ a recoded variable in numeric() string format
 Function to recode a variable containing noga codes to labels and vice versa
 }
 \examples{
-example.data <-
-noga::noga_recode(var=example.data$,language="fr",level="section",to="auto")
+example.data <- data.frame(test1 = c(702,620),test2 = c("Management consultancy activities","Extraction of natural gas"),test3=c("0702","0620"))
+noga::noga_recode(var=example.data$test1,language="fr",level="section",to="auto")
+noga::noga_recode(var=example.data$test2,language="en",level="auto",to="values")
+noga::noga_recode(var=example.data$test3,language="de",level="auto",to="auto")
 }
