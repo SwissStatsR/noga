@@ -6,7 +6,7 @@
 noga_lookup <- function(){
   nomenklaturpath <- system.file("extdata", package = "noga") |>
     list.files(full.names=TRUE) |>
-    grep(pattern="HCL_NOGA",x=_,value=TRUE)
+    grep(pattern="HCL_NOGA_levels_1-5.R",x=_,value=TRUE)
 
     lookup <- readRDS(nomenklaturpath)
     return(lookup)
