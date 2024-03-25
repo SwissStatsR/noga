@@ -7,13 +7,21 @@
 noga_recode(var, language = "en", level = "auto", to = "auto")
 }
 \arguments{
-\item{var}{The variable containing the noga-codes or noga-values that you want to recode. Must be numeric or string, factor variables are not supported.}
+\item{var}{The variable containing the noga-codes or noga-values that you
+want to recode. Must be numeric or string, factor variables are not supported.}
 
-\item{language}{One of "de" (German), "en" (English), "fr" (French) or "it" (Italian). Defaults to English.}
+\item{language}{One of "de" (German), "en" (English), "fr" (French) or "it"
+(Italian). Defaults to English.}
 
-\item{level}{The NOGA-Level you want to recode. Must be one of "auto" (Default), "section" (1. level), "division" (2. level), "group" (3.), "class" (4.) or "type" (5.). If set to "auto", the NOGA level will be identified based on the number of digits/characters of the maximum non-missing value of that variable.}
+\item{level}{The NOGA-Level you want to recode. Must be one of "auto"
+(Default), "section" (1. level), "division" (2. level), "group" (3.),
+"class" (4.) or "type" (5.). If set to "auto", the NOGA level will be
+identified based on the number of digits/characters of the maximum non-missing
+value of that variable.}
 
-\item{to}{Recode values to labels or vice versa? Defaults to "auto" (will identify based on the input variable the recoding direction), or "values" will recode labels to values or "labels" will recode values to labels.}
+\item{to}{Recode values to labels or vice versa? Defaults to "auto"
+(will identify based on the input variable the recoding direction), or
+"values" will recode labels to values or "labels" will recode values to labels.}
 }
 \value{
 a recoded variable in numeric() string format
@@ -22,7 +30,10 @@ a recoded variable in numeric() string format
 Function to recode a variable containing noga codes to labels and vice versa
 }
 \examples{
-example.data <- data.frame(test1 = c(702,620),test2 = c("Management consultancy activities","Extraction of natural gas"),test3=c("0702","0620"))
+example.data <- data.frame(
+  test1 = c(702,620),
+  test2 = c("Management consultancy activities","Extraction of natural gas"),
+  test3=c("0702","0620"))
 noga::noga_recode(var=example.data$test1,language="fr",level="section",to="auto")
 noga::noga_recode(var=example.data$test2,language="en",level="auto",to="values")
 noga::noga_recode(var=example.data$test3,language="de",level="auto",to="auto")

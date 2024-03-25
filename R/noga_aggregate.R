@@ -1,11 +1,21 @@
-#' Function to assign a lower noga level values a higher one (e.g. assign divisions to noga groups) for aggregation. Note that this function doesn't actually aggregate, it prepares your data for aggregation. It also works only with noga-values not with its labels
+#' Function to assign a lower noga level values a higher one
+#' (e.g. assign divisions to noga groups) for aggregation.
+#' Note that this function doesn't actually aggregate, it prepares your data
+#' for aggregation. It also works only with noga-values not with its labels
 #' @name noga_aggregate
-#' @param var The variable containing the noga-codes or noga-values that you want to aggregate. Must be numeric or string, factor variables are not supported.
-#' @param language Required if either your input or output are labels. One of "de" (German), "en" (English), "fr" (French) or "it" (Italian). Defaults to English.
-#' @param level For which higher NOGA-Level you want the values? Must be one of "section" (1. level), "division" (2. level), "group" (3.), "class" (4.). "Type" is not possible because it has no lower level to aggregate.
-#' @param type Determines whether your output variable is "character" or "numeric". Defaults to "numeric".
+#' @param var The variable containing the noga-codes or noga-values that you want
+#' to aggregate. Must be numeric or string, factor variables are not supported.
+#' @param language Required if either your input or output are labels.
+#' One of "de" (German), "en" (English), "fr" (French) or "it" (Italian).
+#' Defaults to English.
+#' @param level For which higher NOGA-Level you want the values?
+#' Must be one of "section" (1. level), "division" (2. level), "group" (3.),
+#' "class" (4.). "Type" is not possible because it has no lower level to aggregate.
+#' @param type Determines whether your output variable is "character" or
+#' "numeric". Defaults to "numeric".
 #' @importFrom plyr mapvalues
-#' @returns A variable or vector that contains the values or labels of a higher noga-unit for each lower noga-unit input.
+#' @returns A variable or vector that contains the values or labels of a higher
+#' noga-unit for each lower noga-unit input.
 #' @export
 #' @examples
 #' example.data <- c(479,433,990)
