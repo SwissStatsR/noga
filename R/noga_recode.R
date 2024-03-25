@@ -14,7 +14,7 @@
 #' noga::noga_recode(var=example.data$test3,language="de",level="auto",to="auto")
 
 noga_recode <- function(var,language="en",level="auto",to="auto"){
-  lookup <- noga_lookup()
+  lookup <- noga_levels
   vartype <- class(var)
   runerrors <- function(to,level,language,vartype)
 

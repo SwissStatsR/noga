@@ -8,12 +8,12 @@
 #' @returns A variable or vector that contains the values or labels of a higher noga-unit for each lower noga-unit input.
 #' @export
 #' @examples
-#' example.data <- torecode=c(479,433,990)
+#' example.data <- c(479,433,990)
 #' noga::noga_aggregate(var=example.data,language="en",level="section",type="")
 
 noga_aggregate <- function(var,language="en",level,type="numeric"){
 
-  lookup <- noga_lookup_agg()
+  lookup <- noga_levels_agg
   vartype <- class(var)
 
   noga.level <- automaticleveldetection(vartype,var)
