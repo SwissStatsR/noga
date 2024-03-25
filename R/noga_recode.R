@@ -4,6 +4,7 @@
 #' @param language One of "de" (German), "en" (English), "fr" (French) or "it" (Italian). Defaults to English.
 #' @param level The NOGA-Level you want to recode. Must be one of "auto" (Default), "section" (1. level), "division" (2. level), "group" (3.), "class" (4.) or "type" (5.). If set to "auto", the NOGA level will be identified based on the number of digits/characters of the maximum non-missing value of that variable.
 #' @param to Recode values to labels or vice versa? Defaults to "auto" (will identify based on the input variable the recoding direction), or "values" will recode labels to values or "labels" will recode values to labels.
+#' @importFrom plyr mapvalues
 #' @returns a recoded variable in numeric() string format
 #' @export
 #' @examples

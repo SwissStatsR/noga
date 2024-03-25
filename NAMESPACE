@@ -2,3 +2,4 @@
 
 export(noga_aggregate)
 export(noga_recode)
+importFrom(plyr,mapvalues)

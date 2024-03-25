@@ -4,6 +4,7 @@
 #' @param language Required if either your input or output are labels. One of "de" (German), "en" (English), "fr" (French) or "it" (Italian). Defaults to English.
 #' @param level For which higher NOGA-Level you want the values? Must be one of "section" (1. level), "division" (2. level), "group" (3.), "class" (4.). "Type" is not possible because it has no lower level to aggregate.
 #' @param type Determines whether your output variable is "character" or "numeric". Defaults to "numeric".
+#' @importFrom plyr mapvalues
 #' @returns A variable or vector that contains the values or labels of a higher noga-unit for each lower noga-unit input.
 #' @export
 #' @examples

@@ -8,6 +8,7 @@ Description: This package recodes numeric NOGA values to its value labels and vi
     The package allows to recode values from all five NOGA levels (Section, Division, Group, Class and Type).
     The package can recode values to value labels in four languages (English, German, French and Italian).
 License: GPL3
+Imports: plyr
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
