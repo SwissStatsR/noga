@@ -25,9 +25,14 @@
 #' noga::noga_recode(var=example.data$test3,language="de",level="auto",to="auto")
 
 noga_recode <- function(var,language="en",level="auto",to="auto"){
-  lookup <- noga_levels
+  noga_levels <- noga_levels
   vartype <- class(var)
   runerrors <- function(to,level,language,vartype)
+  if(vartype %in% c("numeric","integer")){
+    if(min(nchar(as.character(var)))!=max(nchar(as.character(var)))){
+      var <- transform_numeric_var(var)
+    }
+  }
 
   if(to!="auto"){
     direction.to <- to
@@ -38,10 +43,11 @@ noga_recode <- function(var,language="en",level="auto",to="auto"){
   label.var <- paste0("name_",language)
 
   if(level!="auto"){
-    if(vartype!="numeric"){
+    if(vartype!="numeric"&vartype!="integer"){
       noga.level <- level
-    }else if(vartype=="numeric"){
+    }else if(vartype=="numeric"|vartype=="integer"){
       noga.level <- paste0(level,".n")
+
     }
     detected.noga.level <- gsub(pattern="(\\.n$)",replacement="",automaticleveldetection(vartype,var))
     if(noga.level!=detected.noga.level)warning("The noga level you have supplied manually in the level parameter does not correspond to the automatically detected noga level of the input variable. Expect weird output. If you think the noga level you have supplied does match the one of the varaible and that this is a bug of this function, please open an issue at https://github.com/jbeoh/noga/issues")
@@ -50,8 +56,8 @@ noga_recode <- function(var,language="en",level="auto",to="auto"){
     if(noga.level=="Please provide the noga level manually, the automatic detection failed.")stop("Please provide the noga level manually, the automatic detection failed.")
   }
 
-  lookup <- lookup[,c(eval(noga.level),eval(label.var))]
-  lookup <- lookup[!is.na(lookup[,eval(noga.level)]),]
+  lookup <- noga_levels[,c(eval(noga.level),eval(label.var))]
+  lookup <- noga_levels[!is.na(lookup[,eval(noga.level)]),]
   if(direction.to=="values"){
     from.vector <- as.vector(unlist(lookup[,eval(label.var)]))
     to.vector <- as.vector(unlist(lookup[,eval(noga.level)]))

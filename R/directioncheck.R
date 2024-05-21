@@ -3,7 +3,7 @@
 #' @noRd
 
 directioncheck <- function(to,vartype,var){
-  if(to=="auto" & vartype=="numeric"){
+  if(to=="auto" & vartype%in%c("numeric","integer")){
     direction.to="labels"
   }else if(to=="auto" & vartype=="character" & max(nchar(var))>1){
     direction.to="values"

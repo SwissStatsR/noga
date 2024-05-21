@@ -1,7 +1,7 @@
 Package: noga
 Type: Package
 Title: noga: Recode according to the General Classifcation of Economic Activities 2008
-Version: 0.1.1
+Version: 0.1.2
 Author: Johannes Besch
 Maintainer: Johannes Besch <johannes.besch@gmx.ch>
 Description: This package recodes numeric NOGA values to its value labels and vice versa
@@ -11,6 +11,6 @@ License: GPL (>= 3)
 Imports: plyr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Depends: 
     R (>= 2.10)
