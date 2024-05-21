@@ -25,7 +25,7 @@
 #' noga::noga_recode(var=example.data$test3,language="de",level="auto",to="auto")
 
 noga_recode <- function(var,language="en",level="auto",to="auto"){
-  noga_levels <- noga_levels
+ lookup <- noga_levels
   vartype <- class(var)
   runerrors <- function(to,level,language,vartype)
   if(vartype %in% c("numeric","integer")){
@@ -56,8 +56,8 @@ noga_recode <- function(var,language="en",level="auto",to="auto"){
     if(noga.level=="Please provide the noga level manually, the automatic detection failed.")stop("Please provide the noga level manually, the automatic detection failed.")
   }
 
-  lookup <- noga_levels[,c(eval(noga.level),eval(label.var))]
-  lookup <- noga_levels[!is.na(lookup[,eval(noga.level)]),]
+  lookup <- lookup[,c(eval(noga.level),eval(label.var))]
+  lookup <- lookup[!is.na(lookup[,eval(noga.level)]),]
   if(direction.to=="values"){
     from.vector <- as.vector(unlist(lookup[,eval(label.var)]))
     to.vector <- as.vector(unlist(lookup[,eval(noga.level)]))
