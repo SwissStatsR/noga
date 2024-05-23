@@ -27,7 +27,11 @@ generate_noga_lookup_table <- function(){
     }
     lookup <- noga_names
     names(lookup) <- tolower(names(lookup))
-
+    lookup$name_de <- stringi::stri_escape_unicode(lookup$name_de)
+    lookup$name_en <- stringi::stri_escape_unicode(lookup$name_en)
+    lookup$name_fr <- stringi::stri_escape_unicode(lookup$name_fr)
+    lookup$name_it <- stringi::stri_escape_unicode(lookup$name_it)
+    iconv(lookup$name_de,to="UTF-8")
     usethis::use_data(lookup)
 
 }
