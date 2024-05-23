@@ -26,7 +26,7 @@
 #' noga::noga_recode(var=example.data$test3,language="de",level="auto",to="auto")
 
 noga_recode <- function(var,language="en",level="auto",to="auto",warn=TRUE){
- lookup <- utils::data(lookup,package="noga")
+ lookup <- noga::lookup
   vartype <- class(var)
   runerrors(to,level,language,vartype)
   label.var <- paste0("name_",language)
@@ -74,6 +74,7 @@ noga_recode <- function(var,language="en",level="auto",to="auto",warn=TRUE){
   }
   var[!missings.matched.var] <- to.vector[matched.var[!missings.matched.var]]
   var[missings.matched.var] <- NA
+  #var <- iconv(var, from = "UTF-8", to = "latin-1")
   return(var)
 }
 
