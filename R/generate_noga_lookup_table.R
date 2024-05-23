@@ -31,7 +31,6 @@ generate_noga_lookup_table <- function(){
     lookup$name_en <- stringi::stri_escape_unicode(lookup$name_en)
     lookup$name_fr <- stringi::stri_escape_unicode(lookup$name_fr)
     lookup$name_it <- stringi::stri_escape_unicode(lookup$name_it)
-    iconv(lookup$name_de,to="UTF-8")
     usethis::use_data(lookup)
 
 }

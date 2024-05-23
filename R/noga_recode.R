@@ -74,6 +74,7 @@ noga_recode <- function(var,language="en",level="auto",to="auto",warn=TRUE){
   }
   var[!missings.matched.var] <- to.vector[matched.var[!missings.matched.var]]
   var[missings.matched.var] <- NA
+  #var <- iconv(var, from = "UTF-8", to = "latin-1")
   return(var)
 }
 
