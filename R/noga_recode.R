@@ -26,7 +26,7 @@
 #' noga::noga_recode(var=example.data$test3,language="de",level="auto",to="auto")
 
 noga_recode <- function(var,language="en",level="auto",to="auto",warn=TRUE){
- lookup <- utils::data(lookup,package="noga")
+ lookup <- utils::data("lookup",package="noga")
   vartype <- class(var)
   runerrors(to,level,language,vartype)
   label.var <- paste0("name_",language)
