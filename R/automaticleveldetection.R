@@ -2,7 +2,7 @@
 #' @name automaticleveldetection
 #' @noRd
 
-automaticleveldetection <- function(vartype,var){
+automaticleveldetection <- function(vartype,var,lookup,label.var){
     if(any(grepl("[A-Za-z]", var) )==TRUE){
       if(max(nchar(var))==1){noga.level <- "section"} else{
         lookup.filtered <- lookup[lookup[,eval(label.var)] %in% var,]
