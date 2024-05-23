@@ -3,12 +3,12 @@
 #' @noRd
 #'
 generate_noga_lookup_table <- function(){
-  de <- utils::read.table(file="data/HCL_NOGA_levels_1-5_de.csv",header=TRUE,sep=",") |>
+  de <- utils::read.table(file="data/HCL_NOGA_levels_1-5_de.csv",header=TRUE,sep=",",encoding = "UTF-8") |>
     subset(select = c("Code", "Name_de"))
-  en <- utils::read.table(file="data/HCL_NOGA_levels_1-5_en.csv",header=TRUE,sep=",")
-  fr <- utils::read.table(file="data/HCL_NOGA_levels_1-5_fr.csv",header=TRUE,sep=",") |>
+  en <- utils::read.table(file="data/HCL_NOGA_levels_1-5_en.csv",header=TRUE,sep=",",encoding = "UTF-8")
+  fr <- utils::read.table(file="data/HCL_NOGA_levels_1-5_fr.csv",header=TRUE,sep=",",encoding = "UTF-8") |>
     subset(select = c("Code", "Name_fr"))
-  it <- utils::read.table(file="data/HCL_NOGA_levels_1-5_it.csv",header=TRUE,sep=",") |>
+  it <- utils::read.table(file="data/HCL_NOGA_levels_1-5_it.csv",header=TRUE,sep=",",encoding = "UTF-8") |>
     subset(select = c("Code", "Name_it"))
   noga_names <- merge(en,de,by="Code",sort=FALSE) |>
     merge(x=_,y=fr,by="Code",sort=FALSE) |>
@@ -27,6 +27,7 @@ generate_noga_lookup_table <- function(){
     }
     lookup <- noga_names
     names(lookup) <- tolower(names(lookup))
+
     usethis::use_data(lookup)
 
 }
