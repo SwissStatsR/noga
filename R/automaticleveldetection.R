@@ -5,9 +5,11 @@
 automaticleveldetection <- function(var,language){
     if(any(grepl("[A-Za-z]", var) )==TRUE){
 
-      if(max(nchar(var))==1){noga.level <- "section"} else{
+      if(max(nchar(var))==1){
+        noga.level <- "section"
+        } else{
         label.var <- paste0("name_",language)
-        lookup.filtered <- noga::lookup[noga::lookup[,eval(label.var)] %in% var,]
+        lookup.filtered <- noga::lookup[eval(label.var) %in% var,]
         if(all(!is.na(lookup.filtered$type))==TRUE){noga.level <- "type"}
         if(all(!is.na(lookup.filtered$class))==TRUE & any(is.na(lookup.filtered$type))==TRUE){noga.level <- "class"}
         if(all(!is.na(lookup.filtered$group))==TRUE & any(is.na(lookup.filtered$class))==TRUE){noga.level <- "group"}
