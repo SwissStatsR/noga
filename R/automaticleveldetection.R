@@ -3,7 +3,8 @@
 #' @noRd
 
 automaticleveldetection <- function(var,language){
-    if(any(grepl("[A-Za-z]", var) )==TRUE){
+  if(any(grepl("[A-Za-z]", var) )==TRUE){
+
 
       if(max(nchar(var))==1){
         noga.level <- "section"
@@ -20,15 +21,15 @@ automaticleveldetection <- function(var,language){
       }
 
 
-    }else{
-      noga.level <- switch(as.character(nchar(max(var,na.rm=TRUE))),
-                           "1"="section",
-                           "2"="division",
-                           "3"="group",
-                           "4"="class",
-                           "6"="type",
-                           warning("Please provide the noga level manually, the automatic detection failed."))
-    }
+  }else{
+    noga.level <- switch(as.character(nchar(max(var,na.rm=TRUE))),
+                         "1"="section",
+                         "2"="division",
+                         "3"="group",
+                         "4"="class",
+                         "6"="type",
+                         warning("Please provide the noga level manually, the automatic detection failed."))
+  }
 
   return(noga.level)
 }
