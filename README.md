@@ -52,16 +52,9 @@ test1 = c(702,62),
 test2 = c("Management consultancy activities","Extraction of natural gas"),
 test3=c("702","062"))
 noga::noga_recode(var=example.data$test1,language="fr",level="group",to="auto")
-#> Warning in noga::noga_recode(var = example.data$test1, language = "fr", : The
-#> noga level you have supplied manually in the level parameter does not
-#> correspond to the automatically detected noga level of the input variable.
-#> Expect weird output. If you think the noga level you have supplied does match
-#> the one of the varaible and that this is a bug of this function, please open an
-#> issue at https://github.com/jbeoh/noga/issues
 #> [1] "Conseil de gestion"        "Extraction de gaz naturel"
 noga::noga_recode(var=example.data$test2,language="en",level="auto",to="values")
-#> The following values in the supplied variable could not be recoded and has been set to `NA` as there was no according NOGA-level match: Management consultancy activities
-#> [1] NA       "062000"
+#> [1] "702" "062"
 noga::noga_recode(var=example.data$test3,language="de",level="auto",to="auto")
 #> [1] "Public-Relations- und Unternehmensberatung"
 #> [2] "Gewinnung von Erdgas"
