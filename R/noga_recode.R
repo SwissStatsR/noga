@@ -46,11 +46,11 @@ noga_recode <- function(var,language="en",level="auto",to="auto",warn=TRUE){
 
   if(level!="auto"){
 
-    detected.noga.level <- gsub(pattern="(\\.n$)",replacement="",automaticleveldetection(vartype,var))
+    detected.noga.level <- gsub(pattern="(\\.n$)",replacement="",automaticleveldetection(var,language))
     if(level!=detected.noga.level)warning("The noga level you have supplied manually in the level parameter does not correspond to the automatically detected noga level of the input variable. Expect weird output. If you think the noga level you have supplied does match the one of the varaible and that this is a bug of this function, please open an issue at https://github.com/jbeoh/noga/issues")
     noga.level <- level
     }else{
-    noga.level <- automaticleveldetection(vartype,var)
+    noga.level <- automaticleveldetection(var,language)
     if(noga.level=="Please provide the noga level manually, the automatic detection failed.")stop("Please provide the noga level manually, the automatic detection failed.")
   }
 

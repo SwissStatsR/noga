@@ -52,9 +52,11 @@ test1 = c(702,62),
 test2 = c("Management consultancy activities","Extraction of natural gas"),
 test3=c("702","062"))
 noga::noga_recode(var=example.data$test1,language="fr",level="group",to="auto")
+
 #> [1] "Conseil de gestion"        "Extraction de gaz naturel"
 noga::noga_recode(var=example.data$test2,language="en",level="auto",to="values")
 #> [1] "702" "062"
+
 noga::noga_recode(var=example.data$test3,language="de",level="auto",to="auto")
 #> [1] "Public-Relations- und Unternehmensberatung"
 #> [2] "Gewinnung von Erdgas"
