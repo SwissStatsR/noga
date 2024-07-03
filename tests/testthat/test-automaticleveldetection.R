@@ -19,7 +19,7 @@ test_that("groups can be detected", {
 })
 
 test_that("classes with the same names as groups can be detected", {
-  type_labels <- c("Plant propagation", "Mixed farming", "Hunting, trapping and related service activities")
+  type_labels <- c("Preparation and spinning of textile fibres", "Weaving of textiles", "Sawmilling and planing of wood")
   expect_match(automaticleveldetection(type_labels , "en"), "class")
 })
 
