@@ -24,8 +24,7 @@ test_that("classes with the same names as groups can be detected", {
 })
 
 test_that("classes can be detected", {
-  type_labels <- c("Growing of other non-perennial crops", "Growing of grapes", "
-Manufacture of made-up textile articles, except apparel")
+  type_labels <- c("Growing of other non-perennial crops", "Growing of grapes", "Manufacture of made-up textile articles, except apparel")
   expect_match(automaticleveldetection(type_labels , "en"), "class")
 })
 
