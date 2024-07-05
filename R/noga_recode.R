@@ -42,10 +42,10 @@ noga_recode <- function(var,language="en",level="auto",to="auto",warn=TRUE){
     }
   }
 
-  if(to!="auto"){
+  if (to != "auto") {
     direction.to <- to
-  }else{
-    direction.to <- directioncheck(to,vartype,var)
+  } else {
+    direction.to <- directioncheck(vartype, var)
   }
 
 
