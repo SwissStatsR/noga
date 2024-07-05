@@ -8,11 +8,12 @@
 [![R-CMD-check](https://github.com/SwissStatsR/noga/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SwissStatsR/noga/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The noga package provides allows to recode noga values to its labels or
-vice versa. Noga is the European classification system of economic
-activies. The RMD check fails yet because the noga labels are not yet
-supplied in UTF-encoding because to guarantee readibility of the
-characters.
+The noga package allows recoding noga values to their labels or vice
+versa.
+[Noga](https://www.bfs.admin.ch/bfs/en/home/statistics/industry-services/nomenclatures/noga.html)
+is derived from the European classification system of economic
+activities (NACE). NOGA08 is the version currently supported in this
+package.
 
 ## Installation
 
@@ -28,34 +29,51 @@ The package is not yet available on CRAN.
 
 ## NOGA-levels
 
-The Noga clasisfication system has 5 levels which can be recoded with
-this package: - section (alphabetic one character from A to U) -
-division (two digits 01-99) - group (three digits 011-990) - class (four
-digits 0111-9900) - type (six digits 011100-990003)
+The Noga classification system has 5 levels which can be recoded with
+this package:
+
+- section (a single alphabetic character from A to U)
+- division (two digits 01-99)
+- group (three digits 011-990)
+- class (four digits 0111-9900)
+- type (six digits 011100-990003)
 
 Note that if you recode labels to values, the output variable will be in
-string format as the noga-codes are essentially strings rather than a
+string format as the noga codes are essentially strings rather than a
 numeric.
 
 ## Usage
 
-The function `noga::noga_recode` recodes noga values to their labels or
-vice versa. Please note that the vector/variable you recode cannot
-contain multiple noga-levels simultaneously. The function will not be
+The function `noga::noga_recode()` recodes noga values to their labels
+or vice versa. Please note that the vector/variable you recode cannot
+contain multiple noga levels simultaneously. The function will not be
 able to recode a vector that contains both the noga-group and noga-class
-level.
+level. If all given labels are shared across several levels, the deepest
+(most specific) level will be used.
 
 ``` r
 library(noga)
- example.data <- data.frame(
-test1 = c(702,62),
-test2 = c("Management consultancy activities","Extraction of natural gas"),
-test3=c("702","062"))
-noga::noga_recode(var=example.data$test1,language="fr",level="group",to="auto")
+
+example.data <- data.frame(
+  test1 = c(702, 62),
+  test2 = c("Management consultancy activities", "Extraction of natural gas"),
+  test3 = c("702", "062")
+)
+
+noga_recode(var=example.data$test1, language = "fr", level = "group", to = "auto")
+#> Detected level is : group
 #> [1] "Conseil de gestion"        "Extraction de gaz naturel"
-noga::noga_recode(var=example.data$test2,language="en",level="auto",to="values")
+```
+
+``` r
+noga_recode(var=example.data$test2, language = "en", level = "auto", to = "values")
+#> Detected level is : group
 #> [1] "702" "062"
-noga::noga_recode(var=example.data$test3,language="de",level="auto",to="auto")
+```
+
+``` r
+noga_recode(var=example.data$test3, language = "de", level = "auto", to = "auto")
+#> Detected level is : group
 #> [1] "Public-Relations- und Unternehmensberatung"
 #> [2] "Gewinnung von Erdgas"
 ```
@@ -68,3 +86,5 @@ noga::noga_recode(var=example.data$test3,language="de",level="auto",to="auto")
   manufacturing, tertiary: services)
 - Include the Noga-50 level of the Swiss FSO that groups Switzerland’s
   largest divisions so that they represent the 50 economic activities
+- When available, include NOGA 2025 recoding (to/from labels and codes,
+  to/from NOGA08)
