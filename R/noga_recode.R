@@ -1,20 +1,26 @@
 #' Function to recode a variable containing noga codes to labels and vice versa
 #' @name noga_recode
 #' @param var The variable containing the noga-codes or noga-values that you
-#'  want to recode. Must be numeric or string, factor variables are not supported.
-#'  Note that the function can handle only variables that contain one NOGA-level only.
+#'   want to recode. Must be numeric or string, factor variables are not
+#'   supported. Note that the function can handle only variables that contain
+#'   one NOGA-level only.
 #' @param language One of "de" (German), "en" (English), "fr" (French) or "it"
-#'  (Italian). Defaults to English.
+#'   (Italian). Defaults to English.
 #' @param level The NOGA-Level you want to recode. Must be one of "auto"
-#' (Default), "section" (1. level), "division" (2. level), "group" (3.),
-#' "class" (4.) or "type" (5.). If set to "auto", the NOGA level will be
-#' identified based on the number of digits/characters of the maximum non-missing
-#' value of that variable. The variable you recode can only contain one NOGA-level.
-#' @param to Recode values to labels or vice versa? Defaults to "auto"
-#' (will identify based on the input variable the recoding direction), or
-#' "values" will recode labels to values or "labels" will recode values (codes in string format) to labels.
-#' @param warn TRUE (default) or FALSE. When TRUE will give warnings about non-matching recodings.
-#' @returns a recoded variable in string format (either noga-labels, or noga-codes).
+#'   (Default), "section" (1. level), "division" (2. level), "group" (3.),
+#'   "class" (4.) or "type" (5.). If set to "auto", the NOGA level will be
+#'   identified based on the number of digits/characters of the maximum
+#'   non-missing value of that variable. If all the labels belong to more than
+#'   one level, the deepest one is always used. The variable you recode can only
+#'   contain one NOGA-level.
+#' @param to Recode values to labels or vice versa? Defaults to "auto" (will
+#'   identify based on the input variable the recoding direction), or "values"
+#'   will recode labels to values or "labels" will recode values (codes in
+#'   string format) to labels.
+#' @param warn TRUE (default) or FALSE. When TRUE will give warnings about
+#'   non-matching recodings.
+#' @returns a recoded variable in string format (either noga-labels, or
+#'   noga-codes).
 #' @export
 #' @examples
 #' example.data <- data.frame(
