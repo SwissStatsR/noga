@@ -9,12 +9,9 @@ automaticleveldetection <- function(var, language) {
       noga.level <- "section"
     } else {
       label.var <- paste0("name_", language)
-      to.filter <- noga::lookup[[eval(label.var)]]
-      # Looking for the pattern from the end of string avoid taking narrower/deeper labels into account
+      # Looking for the exact match in the table avoids partial matches
       # eg. Enseignement would otherwise return Enseignement primaire, Enseignement secondaire and so on
-      matched.successfully <- sapply(paste0(unique(var), "$"), function(x) grepl(x, to.filter))
-      matched.succesfully.index <- which(rowSums(matched.successfully) > 0)
-      lookup.filtered <- noga::lookup[matched.succesfully.index, ]
+      lookup.filtered <- noga::lookup[noga::lookup[[label.var]] %in% unique(var), ]
 
       if (nrow(lookup.filtered) == 0) {
         # No match in the lookup table
@@ -33,6 +30,7 @@ automaticleveldetection <- function(var, language) {
 
       # If ties, take the deepest level
       if (length(noga.level) > 1) {
+        message(paste("Several plausible levels:", paste(noga.level, collapse=",")))
         if ("type" %in% noga.level) {
           noga.level <- "type"
         } else if ("class" %in% noga.level) {
