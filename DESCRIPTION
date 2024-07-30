@@ -14,7 +14,11 @@ Authors@R:
            comment = c(ORCID = "0009-0008-6625-2899")),
     person(given = "Sandro",
            family = "Burri",
-           role = "ctb"))
+           role = "ctb"),
+    person(given = "Raphaël",
+           family = "Bubloz",
+           role = "ctb")
+           )
 Maintainer: Johannes Besch <johannes.besch@gmx.ch>
 Description: This package recodes numeric NOGA values to its value labels and vice versa
     The package allows to recode values from all five NOGA levels (Section, Division, Group, Class and Type).
