@@ -63,7 +63,7 @@ noga_recode(var=example.data$test3, language = "de", level = "auto", to = "auto"
 ```
 
 ## Planned expansion for the future
-- Aggregation function so that values/codes of one level can be aggregated to another one
+- Aggregation function so that values/codes of a depper level can be aggregated to a higher one
 - Include economic sectors (primary: raw material, secondary: manufacturing, tertiary: services)
 - Include the Noga-50 level of the Swiss FSO that groups Switzerland's largest divisions so that they represent the 50 economic activities
 - When available, include NOGA 2025 recoding (to/from labels and codes, to/from NOGA08)

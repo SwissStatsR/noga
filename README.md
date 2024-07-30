@@ -61,27 +61,18 @@ example.data <- data.frame(
 )
 
 noga_recode(var=example.data$test1, language = "fr", level = "group", to = "auto")
-#> Detected level is : group
 #> [1] "Conseil de gestion"        "Extraction de gaz naturel"
-```
-
-``` r
 noga_recode(var=example.data$test2, language = "en", level = "auto", to = "values")
-#> Detected level is : group
 #> [1] "702" "062"
-```
-
-``` r
 noga_recode(var=example.data$test3, language = "de", level = "auto", to = "auto")
-#> Detected level is : group
 #> [1] "Public-Relations- und Unternehmensberatung"
 #> [2] "Gewinnung von Erdgas"
 ```
 
 ## Planned expansion for the future
 
-- Aggregation function so that values/codes of one level can be
-  aggregated to another one
+- Aggregation function so that values/codes of a depper level can be
+  aggregated to a higher one
 - Include economic sectors (primary: raw material, secondary:
   manufacturing, tertiary: services)
 - Include the Noga-50 level of the Swiss FSO that groups Switzerland’s
